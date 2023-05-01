@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/main.css">
+
+</head>
+
+<body>
+
+  <div class="bg"></div>
+
+  <h1>あなたに合う霧島はどれ？</h1>
+
+  <p id="Qnum">第１問</p>
+
+  <p id="question"></p>
+
+  <ul>
+    <li><button id="answer00" value="0">0</button></li>
+    <li><button id="answer01" value="1">1</button></li>
+    <li><button id="answer02" value="2">2</button></li>
+  </ul>
+
+  <p id="result1">結果</p>
+  <p id="result"></p>
+
+  <div class="gazo"><img id="mypic" width="300" height="600"></div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <script>
+
+    const quiz = [
+      {
+        question: '芋焼酎は好き？？',
+        answers: ['別に。。。', '好き', '大好き'],
+        correct: [0, 3, 5],
+      },
+      {
+        question: 'お酒は強い？？',
+        answers: ['弱い', '普通', 'ザルです'],
+        correct: [0, 2, 5],
+      },
+      {
+        question: 'お酒の味。好きなタイプは？？',
+        answers: ['スッキリ', 'コク', '甘い'],
+        correct: [1, 1, 0],
+      },
+      {
+        question: 'お酒の香り。好きなタイプは？？',
+        answers: ['甘い', 'フルーティ', 'めっちゃ臭いのがたまらない'],
+        correct: [0, 1, 4],
+      },
+      {
+        question: 'お酒飲む時のつまみといえば？？',
+        answers: ['肉！！', 'チーズ、甘い物', '揚げ物'],
+        correct: [1, 0, 1],
+      }
+
+    ];
+
+
+    const result = [];
+    const correct = [];
+    const result_Kiri = ['茜霧島', '赤霧島', '黒霧島', '宮崎限定霧島', '特別蒸留きりしま'];
+
+
+
+
+
+    $('#question').text(quiz[result.length].question);
+    $('#answer00').text(quiz[result.length].answers[0]);
+    $('#answer01').text(quiz[result.length].answers[1]);
+    $('#answer02').text(quiz[result.length].answers[2]);
+
+    $('button').on('click', function (e) {
+      console.log(e);
+      const answer = Number(e.target.value);
+      // イベントオブジェクト e から value プロパティを取得し、
+      // それを Number 関数を使って数値に変換した結果を answer という定数に代入する意味。
+
+      console.log(answer);
+      console.log(quiz[result.length].correct);
+
+      console.log(quiz[result.length].correct[answer]);
+      correct.push(quiz[result.length].correct[answer]);
+      console.log(correct);
+
+      // let a = 0;
+      // a = a + quiz[result.length].correct[answer];
+      // console.log(a);
+
+
+
+      if (answer === quiz[result.length].correct) {
+
+        result.push(quiz[result.length].correct[result.length]);
+      } else {
+
+        result.push('ng');
+      }
+
+
+
+
+
+
+
+      if (result.length === quiz.length) {
+        alert('終了');
+        // let sum1 = 0;
+        // if (sum >= 14) {
+        //   sum1 = 4;
+        // }
+        // else if (sum >= 10 && sum < 14) {
+        //   sum1 = 3;
+        // }
+        // else if (sum >= 7 && sum < 10) {
+        //   sum1 = 2;
+
+        // }
+        // else if (sum >= 3 && sum < 7) {
+        //   sum1 = 1;
+
+        // }
+        // else {
+        //   sum1 = 0;
+
+        // };
+        // console.log(sum1);
+
+        // $('#result').text(result_Kiri[sum1]);
+
+        $('#result').show();
+        $('#result1').show();
+        $('#mypic').show();
+
+      }
+      else {
+        $('#question').text(quiz[result.length].question);
+        $('#answer00').text(quiz[result.length].answers[0]);
+        $('#answer01').text(quiz[result.length].answers[1]);
+        $('#answer02').text(quiz[result.length].answers[2]);
+        let QN = result.length + 1
+        $('#Qnum').text('第' + QN + '問');
+        let sum = correct.reduce(function (a, b) {
+          return a + b;
+        }
+        );
+        console.log(sum);
+        var pics_src = new Array("/img/akane.jpeg", "/img/aka.jpeg", "/img/kuro.jpeg", "/img/siro.jpeg ", "/img/tokujo.jpeg");
+
+        let sum1 = 0;
+        if (sum >= 14) {
+          sum1 = 4;
+        }
+        else if (sum >= 10 && sum < 14) {
+          sum1 = 3;
+        }
+        else if (sum >= 7 && sum < 10) {
+          sum1 = 2;
+
+        }
+        else if (sum >= 3 && sum < 7) {
+          sum1 = 1;
+
+        }
+        else {
+          sum1 = 0;
+
+        };
+        console.log(sum1);
+        document.getElementById("mypic").src = pics_src[sum1];
+        $('#result').text(result_Kiri[sum1]);
+
+
+      }
+    }
+    );
+
+
+
+
+    // $('#Qnum').text(result.length);
+    // '第' + result.length + '問'
+  </script>
+
+</body>
+
+</html>
