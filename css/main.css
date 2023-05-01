@@ -95,7 +95,7 @@ button:hover {
   display: none;
   margin-top: 30px;
   margin-bottom: 10px;
-
+  mix-blend-mode: multiply;
 
   position: absolute;
   z-index: 3;
@@ -104,7 +104,7 @@ button:hover {
 
 .gazo {
   text-align: center;
-  margin-right: 300px;
+  margin-right: 150px;
 }
 
 /* レスポンシブデザイン */
@@ -138,6 +138,9 @@ button:hover {
   /*背景画像の設定*/
   background-image: url(/img/62efa246-fe07-43a9-8017-e2731eda5ce5.webp);
   background-size: cover;
+  background-attachment: scroll;
+  background-attachment: fixed;
+  background-repeat: repeat-y;
 
   /*透過の設定*/
   opacity: 0.4;
