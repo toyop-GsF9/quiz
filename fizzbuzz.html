@@ -20,6 +20,7 @@
     // まずはconsoleに表示してみよう！
 
     const array = [];
+
     for (let i = 1; i <= 100; i++) {
 
 
@@ -28,13 +29,13 @@
         array.push("<p>FizzBuzz</p>");
       } else if (i % 5 === 0) {
         console.log("Buzz");
-        array.push("<p>FizzBuzz</p>");
+        array.push("<p>Buzz</p>");
       } else if (i % 3 === 0) {
         console.log("Fizz");
-        array.push("<p>FizzBuzz</p>");
+        array.push("<p>Fizz</p>");
       } else {
         console.log(i);
-        elements.push("<p>${i}</p>");
+        array.push(`<p>${Number(i)}</p>`);
       }
 
       $("#result").html(array);
